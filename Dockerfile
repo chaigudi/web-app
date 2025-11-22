@@ -6,10 +6,10 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy app
+# Copy app code
 COPY app.py .
 
-# Create non-root user
+# Run as non-root (good practice)
 RUN useradd -m coloruser
 USER coloruser
 

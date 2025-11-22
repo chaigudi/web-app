@@ -5,7 +5,7 @@ metadata:
   labels:
     app: color-page
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: color-page
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: color-page
-          image: color-page:v1          # Image name built into minikube
+          image: color-page:v1          # IMPORTANT: no registry, same as we build
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -25,15 +25,3 @@ spec:
               value: "lightgreen"
             - name: PAGE_TEXT
               value: "Color Page running on minikube!"
-          readinessProbe:
-            httpGet:
-              path: /healthz
-              port: 8080
-            initialDelaySeconds: 3
-            periodSeconds: 5
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: 8080
-            initialDelaySeconds: 10
-            periodSeconds: 10

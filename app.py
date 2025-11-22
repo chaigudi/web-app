@@ -4,11 +4,9 @@ import os
 app = Flask(__name__)
 
 @app.route("/")
-@app.route("/web-app")
 def index():
-    # Color from query (?color=red) or env var, default skyblue
     color = request.args.get("color") or os.getenv("PAGE_COLOR", "skyblue")
-    text = os.getenv("PAGE_TEXT", "Hello from Color Page on K8s!")
+    text = os.getenv("PAGE_TEXT", "Hello from Color Page on Kubernetes (minikube)!")
 
     return f"""
     <html>
@@ -25,7 +23,7 @@ def index():
             font-family: Arial, sans-serif;
           }}
           .card {{
-            background: rgba(255,255,255,0.85);
+            background: rgba(255,255,255,0.9);
             padding: 20px 30px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -56,4 +54,5 @@ def healthz():
 
 
 if __name__ == "__main__":
+    # Very important: listen on 0.0.0.0:8080
     app.run(host="0.0.0.0", port=8080)
