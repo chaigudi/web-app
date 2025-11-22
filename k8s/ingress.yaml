@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: color-page
+  annotations: {}
+spec:
+  rules:
+    - host: chaithanya.com
+      http:
+        paths:
+          - path: /web-app
+            pathType: Prefix
+            backend:
+              service:
+                name: color-page
+                port:
+                  number: 80
