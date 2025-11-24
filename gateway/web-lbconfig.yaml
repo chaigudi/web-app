@@ -1,0 +1,11 @@
+apiVersion: gateway.k8s.aws/v1beta1
+kind: LoadBalancerConfiguration
+metadata:
+  name: web-lbconfig
+  namespace: gateway
+spec:
+  scheme: internet-facing
+  ipAddressType: ipv4
+  listenerConfigurations:
+    - alpnPolicy: None
+      protocolPort: HTTP:80
