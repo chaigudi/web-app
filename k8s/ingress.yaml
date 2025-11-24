@@ -1,16 +1,14 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: color-page
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: color-page-ingress
+  namespace: default
 spec:
+  ingressClassName: nginx
   rules:
-    - host: chaithanya.com
-      http:
+    - http:
         paths:
-          - path: /web-app
+          - path: /
             pathType: Prefix
             backend:
               service:

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: color-page
-          image: color-page:v1          # IMPORTANT: no registry, same as we build
+          image: chaithu0011/color-app:latest          
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -24,4 +24,4 @@ spec:
             - name: PAGE_COLOR
               value: "lightgreen"
             - name: PAGE_TEXT
-              value: "Color Page running on minikube!"
+              value: "Color Page running on EKS!"

@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     color = request.args.get("color") or os.getenv("PAGE_COLOR", "skyblue")
-    text = os.getenv("PAGE_TEXT", "Hello from Color Page on Kubernetes (minikube)!")
+    text = os.getenv("PAGE_TEXT", "Hello from Color Page on EKS!")
 
     return f"""
     <html>
